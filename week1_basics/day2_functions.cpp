@@ -33,7 +33,9 @@ double calc(double a, double b, double c ) //→ return (a + b + c)
 int main()
 {
     double res;
-
+    enum class MenuChoice { ADD=1, MUL, MAX3, SUM3, SHOW_LOGS, EXIT };
+    MenuChoice choice;
+    int menu;
     union num1
     {
         int ia;
@@ -51,7 +53,7 @@ int main()
     }c;
 
     vector<OperationLog> logs;
-    int choice;
+    
     
     do
     {
@@ -62,10 +64,11 @@ int main()
         cout<< "5. Show logs & exit" <<endl;
 
         cout<<"Enter Choice"<<endl;
-        cin>>choice;
+        cin>>menu;
+        choice = static_cast<MenuChoice>(menu);
         switch (choice)
         {
-            case 1:
+            case MenuChoice::ADD:
             {
                 cout<<"Enter two numbers to add"<<endl;
                 cin>>a.ia >> b.ib ;
@@ -74,7 +77,7 @@ int main()
                 cout<<res<<endl;
                 break;
             }
-            case 2:
+            case MenuChoice::MUL:
             {
                 cout<<"Enter two numbers to mul"<<endl;
                 cin>>a.da >> b.db ;
@@ -83,7 +86,7 @@ int main()
                 cout<<res<<endl;
                 break;
             }
-            case 3:
+            case MenuChoice::MAX3:
             {
                 cout<<"Enter three numbers "<<endl;
                 cin>>a.ia >> b.ib >>c.ic;
@@ -92,7 +95,7 @@ int main()
                 cout<<res<<endl;
                 break;
             }
-            case 4:
+            case MenuChoice::SUM3:
             {
                 cout<<"Enter three numbers "<<endl;
                 cin>>a.da >> b.db >>c.dc;
@@ -101,7 +104,7 @@ int main()
                 cout<<res<<endl;
                 break;
             }
-            case 5:
+            case MenuChoice::SHOW_LOGS:
             {
                 cout << "--- Logs ---" << endl;
 
@@ -115,6 +118,6 @@ int main()
 
         }
     }
-    while(choice !=5);
+    while(menu !=5);
     return 0;
 }
